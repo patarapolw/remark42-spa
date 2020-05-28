@@ -1,0 +1,16 @@
+application:
+  name: remark42-deploy
+  project: remark42
+  cloud_region: aws/eu-west-3
+  publicly_accessible: true
+  storage:
+    - name: srv
+      type: ssd
+      size: 1GB
+      mount_point: /srv/var
+routers:
+- name: main
+  routes:
+  - application_name: remark42-deploy
+    paths:
+    - /
