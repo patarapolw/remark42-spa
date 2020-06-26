@@ -24,25 +24,7 @@ Originally tested on [Nuxt.js](https://nuxtjs.org/), but it should be applicable
 - Created `remark42Instance` when the `div` containing remark42 has appear, usually at `mounted` or `componentDidMount` of the SPA lifecycle. Destroy the previous instance first, if neccessary.
 
 ```ts
-  mounted() {
-    if (window.REMARK42) {
-      if (window.REMARK42.destroy) {
-        window.REMARK42.destroy()
-      }
-
-      window.REMARK42.createInstance({
-        node: this.$refs.remark42 as HTMLElement,
-        ...remark42_config  // See <https://github.com/patarapolw/remark42#setup-on-your-website>
-      })
-    }
-  }
-```
-
-- Ensure that this is called every time route changes
-
-```ts
-  @Watch('$route.path')
-  onRouteChange() {
+  initRemark42() {
     if (window.REMARK42) {
       if (window.REMARK42.destroy) {
         window.REMARK42.destroy()
@@ -55,16 +37,33 @@ Originally tested on [Nuxt.js](https://nuxtjs.org/), but it should be applicable
       })
     }
   }
+
+  mounted() {
+    if (window.REMARK42) {
+      this.initRemark42()
+    } else {
+      window.addEventListener('REMARK42::ready', () => {
+        this.initRemark42()
+      })
+    }
+  }
+```
+
+- Ensure that this is called every time route changes
+
+```ts
+  @Watch('$route.path')
+  onRouteChange() {
+    this.initRemark42()
+  }
 ```
 
 - And, destroyed before routeLeave
 
 ```ts
   beforeRouteLeave() {
-    if (process.client) {
-      if (window.REMARK42 && window.REMARK42.destroy) {
-        window.REMARK42.destroy()
-      }
+    if (window.REMARK42 && window.REMARK42.destroy) {
+      window.REMARK42.destroy()
     }
   }
 ```
