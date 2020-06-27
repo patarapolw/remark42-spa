@@ -27,9 +27,16 @@ import 'marx-css/css/marx.css'
 import '~/assets/app.css'
 
 export default {
+  data() {
+    return {
+      remark42Instance: null,
+    }
+  },
   watch: {
     '$route.path'() {
-      this.initRemark42()
+      setTimeout(() => {
+        this.initRemark42()
+      }, 100)
     },
   },
   mounted() {
@@ -44,11 +51,11 @@ export default {
   methods: {
     initRemark42() {
       if (window.REMARK42) {
-        if (window.REMARK42.destroy) {
-          window.REMARK42.destroy()
+        if (this.remark42Instance) {
+          this.remark42Instance.destroy()
         }
 
-        window.REMARK42.createInstance({
+        this.remark42Instance = window.REMARK42.createInstance({
           node: this.$refs.remark42,
           site_id: process.env.REMARK42_SITE_ID,
         })
@@ -56,10 +63,8 @@ export default {
     },
   },
   beforeRouteLeave() {
-    if (process.client) {
-      if (window.REMARK42 && window.REMARK42.destroy) {
-        window.REMARK42.destroy()
-      }
+    if (this.remark42Instance) {
+      this.remark42Instance.destroy()
     }
   },
 }
