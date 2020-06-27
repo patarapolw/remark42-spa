@@ -59,8 +59,8 @@ export default {
    */
   build: {},
   env: {
-    REMARK42_HOST: 'http://localhost:8080',
-    // REMARK42_HOST: 'https://remark42.polv.cc',
+    // REMARK42_HOST: 'http://localhost:8080',
+    REMARK42_HOST: 'https://remark42.polv.cc',
     REMARK42_SITE_ID: 'nuxt-example',
   },
 }

@@ -1,4 +1,4 @@
-<template functional>
+<template>
   <article>
     <h1>Sit earum voluptas est temporibus molestiae vel ducimus fugit.</h1>
     <p>

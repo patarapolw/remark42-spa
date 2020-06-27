@@ -1,4 +1,4 @@
-<template functional>
+<template>
   <article>
     <h1>Ab debitis deserunt ea velit nostrum vel adipisci nostrum.</h1>
     <p>
