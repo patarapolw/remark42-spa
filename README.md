@@ -1,4 +1,4 @@
-# How make [remark42 commenting engine](https://github.com/umputun/remark42) work with Single Page Apps (SPAs)
+# How to make [remark42 commenting engine](https://github.com/umputun/remark42) work with Single Page Apps (SPAs)
 
 Originally tested on [Nuxt.js](https://nuxtjs.org/), but it should be applicable to all SPAs.
 
@@ -67,3 +67,7 @@ Originally tested on [Nuxt.js](https://nuxtjs.org/), but it should be applicable
     }
   }
 ```
+
+## Live examples
+
+- <https://remark42-nuxt-example.netlify.app>
