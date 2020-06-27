@@ -34,9 +34,7 @@ export default {
   },
   watch: {
     '$route.path'() {
-      setTimeout(() => {
-        this.initRemark42()
-      }, 100)
+      this.initRemark42()
     },
   },
   mounted() {
