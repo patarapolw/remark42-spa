@@ -21,7 +21,7 @@
   },
   "dependencies": {
     "marx-css": "^3.0.8",
-    "nuxt": "^2.13.0"
+    "nuxt": "^2.13.3"
   },
   "devDependencies": {
     "@nuxtjs/eslint-config": "^3.0.0",
